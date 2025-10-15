@@ -58,6 +58,8 @@ El proyecto simula los algoritmos BFS y DFS distribuidos utilizando la librería
 
 - Clases principales
 
+1. Nodo.py 
+
 Define la clase base Nodo, representa un nodo genérico con:
 
 - id_nodo: identificador único del nodo.
@@ -67,19 +69,19 @@ Define la clase base Nodo, representa un nodo genérico con:
 - canal_entrada y canal_salida: objetos simpy.Store usados para la comunicación.
 La clase incluye únicamente getters para acceder a sus atributos.
 
-- NodoBFS.py
+2. NodoBFS.py
 Implementa la clase NodoBFS, que extiende a Nodo y ejecuta el algoritmo Breadth-First Search distribuido (BFS).
 El nodo raíz (id = 0) inicia enviando mensajes "GO" a sus vecinos.
 Cada nodo, al recibir "GO", define su padre, su nivel y reenvía el mensaje a sus vecinos no visitados.
 Cuando todos los mensajes de respuesta "BACK" han llegado, el nodo raíz detecta que el árbol BFS se ha construido completamente.
 
-- NodoDFS.py
+3. NodoDFS.py
 Implementa la clase NodoDFS, heredada de Nodo, que simula el algoritmo Depth-First Search distribuido (DFS).
 El nodo raíz comienza enviando "GO" a un vecino (siguiendo la convención de elegir el de menor id).
 Los nodos registran los visitados, envían "GO" a vecinos no visitados y responden con "BACK" cuando completan su recorrido.
 El proceso termina cuando el nodo raíz ha recibido todas las respuestas y no quedan vecinos por explorar.
 
-- Canales/CanalRecorridos.py
+4. Canales/CanalRecorridos.py
 Define la clase CanalRecorridos, derivada de Canal.
 Se encarga de la comunicación one-to-many, permitiendo que un nodo envíe mensajes a múltiples vecinos mediante:
 - envia(mensaje, vecinos): distribuye el mensaje a todos los canales de entrada correspondientes.
