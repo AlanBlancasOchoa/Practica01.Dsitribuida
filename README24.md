@@ -88,7 +88,7 @@ Se encarga de la comunicación one-to-many, permitiendo que un nodo envíe mensa
 - crea_canal_de_entrada(): crea un canal de entrada para cada nodo.
 Internamente utiliza simpy.Store para almacenar los mensajes enviados en el entorno de simulación.
 
-- Flujo de ejecución
+Flujo de ejecución
 
 - Se inicializa el entorno de simulación con env = simpy.Environment().
 
